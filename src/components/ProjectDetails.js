@@ -1,14 +1,15 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React,{useState} from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Card, CardBody, CardTitle, CardText, Button, CardImg, CardImgOverlay } from 'reactstrap';
+import { useCart } from '../context/CartContext'; // Import useCart instead of CartContext
 import useApi from '../hooks/useApi';
-import { CartContext } from '../context/CartContext';
+import { useEffect } from 'react';
 
 const ProjectDetails = () => {
   const { id } = useParams();
   const [project, setProject] = useState(null);
   const { getProject } = useApi();
-  const { addToCart } = useContext(CartContext);
+  const { addToCart } = useCart(); // Use useCart hook to access addToCart
 
   useEffect(() => {
     const fetchProject = async () => {

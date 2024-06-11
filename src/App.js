@@ -1,19 +1,22 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AppNavbar from './components/AppNavbar';
-import ProductList from './components/ProjectList';
-import ProductDetails from './components/ProjectDetails';
-
+import ProjectList from './components/ProjectList';
+import ProjectDetails from './components/ProjectDetails';
+import { CartProvider } from './context/CartContext'; // Import CartProvider
+import Cart from './components/Cart';
 const App = () => {
   return (
+    <CartProvider> {/* Wrap App with CartProvider */}
     <Router>
       <AppNavbar />
       <Routes>
-        <Route path="/" exact element={<ProductList />} />
-        <Route path="/products/:id" element={<ProductDetails />} />
-        <Route path="/cart" element={<div>Cart Page</div>} />
+        <Route path="/" element={<ProjectList />} />
+        <Route path="/projects/:id" element={<ProjectDetails />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </Router>
+  </CartProvider>
   );
 };
 
