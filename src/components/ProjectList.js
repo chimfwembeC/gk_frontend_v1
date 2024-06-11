@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, CardBody, CardTitle, CardText, Button } from 'reactstrap';
 import useApi from '../hooks/useApi';
+import './styles/projects.css'; // Import your CSS file
 
 const ProjectList = () => {
   const [projects, setProjects] = useState([]);
@@ -15,15 +16,16 @@ const ProjectList = () => {
   }, [getProjects]);
 
   return (
-    <Container>    
+    <Container>
+      <h2 className="mb-4 mt-4">Our Projects</h2>
       <Row>
         {projects.map((project) => (
-          <Col sm="4" key={project.id}>
-            <Card>                
+          <Col sm="3" key={project.id} className="mb-4">
+            <Card className="h-100">
               <CardBody>
                 <CardTitle tag="h5">{project.attributes.Name}</CardTitle>
-                <CardText>{project.attributes.Description}</CardText>
-                <Button href={`/projects/${project.id}`}>View Details</Button>
+                <CardText className="limited-description">{project.attributes.Description}</CardText>
+                <Button href={`/projects/${project.id}`} color="primary">View Details</Button>
               </CardBody>
             </Card>
           </Col>
