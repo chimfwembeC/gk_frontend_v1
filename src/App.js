@@ -6,6 +6,8 @@ import ProjectDetails from "./components/ProjectDetails";
 import { CartProvider } from "./context/CartContext"; // Import CartProvider
 import { ThemeProvider } from "./context/ThemeProvider";
 
+
+
 import Cart from "./components/Cart";
 import Footer from "./components/Footer";
 const App = () => {

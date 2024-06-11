@@ -47,7 +47,7 @@ const ProjectDetails = () => {
           <Button onClick={handleAddToCart}>Add to Cart</Button>
         </CardBody>
       </Card>
-      {Photos && (
+      {Photos && Array.isArray(Photos) && (
         <div>
           <h4>Photos</h4>
           <Container>
@@ -55,6 +55,7 @@ const ProjectDetails = () => {
               {Photos.map((photo, index) => (
                 <div className="col-md-3" key={index}>
                   <Card>
+                    {photo.url}
                     <CardImg top width="100%" src={photo.url} alt={`Photo ${index + 1}`} />
                     <CardImgOverlay>
                       <CardTitle tag="h5">Photo {index + 1}</CardTitle>
@@ -68,6 +69,7 @@ const ProjectDetails = () => {
       )}
     </Container>
   );
+  
 };
 
 export default ProjectDetails;

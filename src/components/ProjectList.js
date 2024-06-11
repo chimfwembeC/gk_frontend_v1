@@ -19,17 +19,21 @@ const ProjectList = () => {
     <Container>
       <h2 className="mb-4 mt-4">Our Projects</h2>
       <Row>
-        {projects.map((project) => (
-          <Col sm="3" key={project.id} className="mb-4">
-            <Card className="h-100">
-              <CardBody>
-                <CardTitle tag="h5">{project.attributes.Name}</CardTitle>
-                <CardText className="limited-description">{project.attributes.Description}</CardText>
-                <Button href={`/projects/${project.id}`} color="primary">View Details</Button>
-              </CardBody>
-            </Card>
-          </Col>
+      {projects.map((project) => (
+  <Col sm="3" key={project.id} className="mb-4">
+    <Card className="h-100">
+      <CardBody>
+        <CardTitle tag="h5">{project.attributes.Name}</CardTitle>
+        <CardText className="limited-description">{project.attributes.Description}</CardText>
+        {Array.isArray(project.attributes.Photos) && project.attributes.Photos.map((photo, index) => (
+          <img key={index} src={photo.data.url} alt={`Photo ${index}`} className="project-photo" />
         ))}
+        <Button href={`/projects/${project.id}`} color="primary">View Details</Button>
+      </CardBody>
+    </Card>
+  </Col>
+))}
+
       </Row>
     </Container>
   );
